@@ -1,9 +1,15 @@
-header{
-    text-align:center;
-    
+.encabezado {
+  color: blue;
+  text-align: center;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffe3e3;
 
+.logo {
+  width: 100px;
+  height: auto;
+}
+.imagen-articulo {
+  width: 250px;
+  height: auto;      /* clave: deja que el alto se ajuste solo */
+  object-fit: cover; /* si defines un alto fijo, recorta en vez de estirar */
+  margin: 10px;
 }
