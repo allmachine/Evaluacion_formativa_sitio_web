@@ -2,7 +2,12 @@
   color: blue;
   text-align: center;
 }
-
+#carousel-img {
+   width: 250px;
+  height: auto;      /* clave: deja que el alto se ajuste solo */
+  object-fit: cover; /* si defines un alto fijo, recorta en vez de estirar */
+  margin: 10px;
+}
 .logo {
   width: 100px;
   height: auto;
@@ -12,4 +17,9 @@
   height: auto;      /* clave: deja que el alto se ajuste solo */
   object-fit: cover; /* si defines un alto fijo, recorta en vez de estirar */
   margin: 10px;
+}
+.fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
 }
