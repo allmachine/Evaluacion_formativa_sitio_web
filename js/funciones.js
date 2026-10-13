@@ -28,4 +28,17 @@ function dividir() {
   let resultado = num1 / num2;
 
   document.getElementById("resultado").value = resultado;
+
+
+}
+   $(document).ready(function() {
+    $("#resultado").fadeIn(1000);
+function validateForm() {
+    
+  }
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
 }
