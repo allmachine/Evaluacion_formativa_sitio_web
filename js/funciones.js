@@ -46,13 +46,15 @@ $(document).ready(function () {
     nombre: (v) => {
       if (v === "") return "El nombre es obligatorio";
       if (v.length < 2) return "Debe tener al menos 2 letras";
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s'-]+$/.test(v)) return "Solo se permiten letras";
+      if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s'-]+$/.test(v))
+        return "Solo se permiten letras";
       return "";
     },
     apellido: (v) => {
       if (v === "") return "El apellido es obligatorio";
       if (v.length < 2) return "Debe tener al menos 2 letras";
-      if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s'-]+$/.test(v)) return "Solo se permiten letras";
+      if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s'-]+$/.test(v))
+        return "Solo se permiten letras";
       return "";
     },
     date: (v) => {
@@ -63,12 +65,14 @@ $(document).ready(function () {
     region: (v) => (v === "" ? "Selecciona una región" : ""),
     email: (v) => {
       if (v === "") return "El correo es obligatorio";
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return "Ingresa un correo válido";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))
+        return "Ingresa un correo válido";
       return "";
     },
     telefono: (v) => {
       if (v === "") return "";
-      if (!/^\+?\d{8,12}$/.test(v.replace(/\s/g, ""))) return "Ingresa un teléfono válido (8 a 12 dígitos)";
+      if (!/^\+?\d{8,12}$/.test(v.replace(/\s/g, "")))
+        return "Ingresa un teléfono válido (8 a 12 dígitos)";
       return "";
     },
     carrera: (v) => {
