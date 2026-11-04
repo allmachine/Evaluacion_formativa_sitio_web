@@ -1,9 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    
+
 <ul id="lista"></ul>
 <script>
     const lista = document.getElementById("lista");
-    fetch('../json/datos.json')
+    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQdoPSU4SetyrdlBx6rMYyi8GFxgXxlgvkiFHkeNsvytgGkiMpxOHB1HW42g9QoQxB7-9zqR8Ah8-5F/pubhtml')
         .then(response => response.json())
         .then(data => {
+           
             data.forEach(persona => {
                 const li = document.createElement("li");
                 li.textContent = `${persona.nombre} ${persona.apellido} (${persona.edad}) - ${persona.email}`;
@@ -14,3 +28,5 @@
         
 
 </script>
+</body>
+</html>
