@@ -143,3 +143,4 @@ $(document).ready(function () {
     $form.find(".invalid-feedback").remove();
   });
 });
+
