@@ -1,39 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Lista de Personas</title>
 </head>
 <body>
-    <h1>Lista de Personas</h1>
-    <ol id="lista"></ol>
+    <nav>
+        <ul>
+            <li><a href="acercade.html">Acerca de</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="../index.html">Volver a inicio</a></li>
+        </ul>
+    </nav>
 
-     <li><a href="acercade.html">Acerca de</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-         <li><a href="../index.html">Volver a inicio</a></li>
-     
-
-    <script>
-        const lista = document.getElementById('lista');
-
-        fetch('../json/datos.json')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(persona => {
-                    const li = document.createElement('li');
-                    li.textContent = `Nombre: ${persona.nombre} - Edad: ${persona.edad} - Correo: ${persona.correo}`;
-                    lista.appendChild(li);
-                });
-            })
-            .catch(error => console.error('Error al cargar el archivo JSON:', error));
-    </script>
+    <main>
+        <h1>Lista de Personas</h1>
+        <p id="estado">Cargando datos...</p>
+        <ol id="lista"></ol>
+    </main>
 
     <footer>
         <p>Derechos reservados &copy; 2026</p>
-        <p>Francisco Calfun</p>
+        <p>maxi varas</p>
     </footer>
+
+    <script>
+        const lista = document.getElementById('lista');
+        const estado = document.getElementById('estado');
+
+        async function cargarPersonas() {
+            try {
+                const respuesta = await fetch('../json/datos.json');
+                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
+
+                const datos = await respuesta.json();
+                const validas = datos.filter(p => p && p.nombre);
+
+                const fragmento = document.createDocumentFragment();
+                validas.forEach(persona => {
+                    const li = document.createElement('li');
+                    li.textContent = `Nombre: ${persona.nombre} - Edad: ${persona.edad ?? '—'} - Correo: ${persona.correo ?? '—'}`;
+                    fragmento.appendChild(li);
+                });
+
+                lista.appendChild(fragmento);
+                estado.textContent = validas.length
+                    ? `${validas.length} personas cargadas.`
+                    : 'No hay personas en la lista.';
+            } catch (error) {
+                console.error('Error al cargar el archivo JSON:', error);
+                estado.textContent = 'No se pudieron cargar los datos. Revisa la ruta del archivo JSON.';
+            }
+        }
+
+        cargarPersonas();
+    </script>
 </body>
 </html>

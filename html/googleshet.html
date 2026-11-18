@@ -12,10 +12,9 @@
     <script>
         const lista = document.getElementById('lista');
 
-        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQOfG7qBY_hQOY7FTG65dDlLz-G7xv0LyyHzc10AnzJp8vgzd1NcHlyR_LztLk_AscAnjomorSx2bmM/pub?output=csv')
-            .then(response => response.text())
+fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQOfG7qBY_hQOY7FTG65dDlLz-G7xv0LyyHzc10AnzJp8vgzd1NcHlyR_LztLk_AscAnjomorSx2bmM/pub?output=csv&t=' + Date.now())            .then(response => response.text())
             .then(data => {
-                const rows = data.split('\n').slice(1);
+                const rows = data.split('\n').slice(1); // Omitir la primera fila (encabezados)
                 rows.forEach(row => {
                     const [nombre, edad, correo] = row.split(',');
                     const li = document.createElement('li');

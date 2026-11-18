@@ -2,6 +2,8 @@
     {"nombre": "Juan", "apellido": "Pérez", "edad": 25, "email": "juan.perez@gmail.com"},
     {"nombre": "María", "apellido": "González", "edad": 30, "email": "maria.gonzalez@gmail.com"},
     {"nombre": "Pedro", "apellido": "López", "edad": 35, "email": "pedro.lopez@gmail.com"},
-    {"nombre": "Pedro", "apellido": "López", "edad": 35, "email": "pedro.lopez@gmail.com"}
+    {"nombre": "Pedro", "apellido": "López", "edad": 35, "email": "pedro.lopez@gmail.com"},
+    {"nombre": "Ana", "apellido": "Martínez", "edad": 28, "email": "ana.martinez@gmail.com"}
+
 
 ]
