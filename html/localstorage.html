@@ -16,6 +16,7 @@
     <input id="tarea" placeholder="Ingrese su tarea" type="text">
     <button id="guardar" onclick="guardar()">Guardar</button>
     <ul id="lista"></ul>
+    <button id="borrarTodo" onclick="borrarTodo()">Borrar todo</button>
 
     <script>
         
@@ -31,6 +32,10 @@
                 tareaInput.value = '';
                 mostrarTareas();
             }
+            function borrarTodo() {
+    localStorage.removeItem('tareas');
+    mostrarTareas();
+}
         }
 
         function mostrarTareas() {
