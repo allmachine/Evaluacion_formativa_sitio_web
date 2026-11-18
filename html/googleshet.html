@@ -3,30 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="css/style.css">
-
     <title>Document</title>
 </head>
-
 <body>
-    
+    <h1>Lista de Personas</h1>
+    <ol id="lista"></ol>
 
-<ul id="lista"></ul>
-<script>
-    const lista = document.getElementById("lista");
-    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQdoPSU4SetyrdlBx6rMYyi8GFxgXxlgvkiFHkeNsvytgGkiMpxOHB1HW42g9QoQxB7-9zqR8Ah8-5F/pubhtml')
-        .then(response => response.json())
-        .then(data => {
-           
-            data.forEach(persona => {
-                const li = document.createElement("li");
-                li.textContent = `${persona.nombre} ${persona.apellido} (${persona.edad}) - ${persona.email}`;
-                lista.appendChild(li);
-            });
-        })
-        .catch(error => console.error("Error al cargar el archivo JSON:", error));
-        
+    <script>
+        const lista = document.getElementById('lista');
 
-</script>
+        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQOfG7qBY_hQOY7FTG65dDlLz-G7xv0LyyHzc10AnzJp8vgzd1NcHlyR_LztLk_AscAnjomorSx2bmM/pub?output=csv')
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.split('\n').slice(1);
+                rows.forEach(row => {
+                    const [nombre, edad, correo] = row.split(',');
+                    const li = document.createElement('li');
+                    li.textContent = `Nombre: ${nombre} - Edad: ${edad} - Correo: ${correo}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error al cargar el archivo CSV:', error));
+    </script>
 </body>
 </html>

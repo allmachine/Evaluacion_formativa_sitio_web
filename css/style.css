@@ -1,25 +1,20 @@
-.encabezado {
-  color: blue;
-  text-align: center;
+header,nav,footer {
+    text-align: center;
+        }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #edeff7;
 }
-#carousel-img {
-   width: 250px;
-  height: auto;      /* clave: deja que el alto se ajuste solo */
-  object-fit: cover; /* si defines un alto fijo, recorta en vez de estirar */
-  margin: 10px;
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
 }
-.logo {
-  width: 100px;
-  height: auto;
-}
-.imagen-articulo {
-  width: 250px;
-  height: auto;      /* clave: deja que el alto se ajuste solo */
-  object-fit: cover; /* si defines un alto fijo, recorta en vez de estirar */
-  margin: 10px;
-}
-.fieldset {
-  border: 1px solid #0aefff;
-  padding: 10px;
-  margin-bottom: 20px;
+
+#lista {
+    padding: 100px;
+    text-align: center;
+
 }

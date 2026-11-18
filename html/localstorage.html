@@ -1,20 +1,51 @@
-<input id="tarea" placeholder="Escribe una tarea">
-<button onclick="guardar()">Guardar</button>
-<ul id="lista"></ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <ul>
+            <li><a href="acercade.html">Acerca de</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+             <li><a href="../index.html">Volver a inicio</a></li>
+        </ul>
+    
+    <input id="tarea" placeholder="Ingrese su tarea" type="text">
+    <button id="guardar" onclick="guardar()">Guardar</button>
+    <ul id="lista"></ul>
 
-<script>
-function guardar() {
-  let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  tareas.push(document.getElementById("tarea").value);
-  localStorage.setItem("tareas", JSON.stringify(tareas));
-  document.getElementById("tarea").value = "";
-  mostrar();
-}
+    <script>
+        
+        const lista = document.getElementById('lista');
+        const tareaInput = document.getElementById('tarea');
 
-function mostrar() {
-  let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  document.getElementById("lista").innerHTML = tareas.map(t => `<li>${t}</li>`);
-}
+        function guardar() {
+            const tarea = tareaInput.value;
+            if (tarea) {
+                let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+                tareas.push(tarea);
+                localStorage.setItem('tareas', JSON.stringify(tareas));
+                tareaInput.value = '';
+                mostrarTareas();
+            }
+        }
 
-mostrar();
-</script>
+        function mostrarTareas() {
+            lista.innerHTML = '';
+            let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+            tareas.forEach((tarea, index) => {
+                const li = document.createElement('li');
+                li.textContent = tarea;
+                lista.appendChild(li);
+            });
+        }
+
+        // Mostrar las tareas al cargar la página
+        mostrarTareas();
+        </script>
+
+</body>
+</html>

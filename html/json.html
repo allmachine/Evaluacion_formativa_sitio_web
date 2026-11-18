@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
-
 <body>
-    
+    <h1>Lista de Personas</h1>
+    <ol id="lista"></ol>
 
-<ul id="lista"></ul>
-<script>
-    const lista = document.getElementById("lista");
-    fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQdoPSU4SetyrdlBx6rMYyi8GFxgXxlgvkiFHkeNsvytgGkiMpxOHB1HW42g9QoQxB7-9zqR8Ah8-5F/pubhtml')
-        .then(response => response.json())
-        .then(data => {
-           
-            data.forEach(persona => {
-                const li = document.createElement("li");
-                li.textContent = `${persona.nombre} ${persona.apellido} (${persona.edad}) - ${persona.email}`;
-                lista.appendChild(li);
-            });
-        })
-        .catch(error => console.error("Error al cargar el archivo JSON:", error));
-        
+     <li><a href="acercade.html">Acerca de</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+         <li><a href="../index.html">Volver a inicio</a></li>
+     
 
-</script>
+    <script>
+        const lista = document.getElementById('lista');
+
+        fetch('../json/datos.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(persona => {
+                    const li = document.createElement('li');
+                    li.textContent = `Nombre: ${persona.nombre} - Edad: ${persona.edad} - Correo: ${persona.correo}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    </script>
+
+    <footer>
+        <p>Derechos reservados &copy; 2026</p>
+        <p>Francisco Calfun</p>
+    </footer>
 </body>
 </html>
